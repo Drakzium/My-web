@@ -15,7 +15,6 @@ ENV DATA_DIR=/data
 ENV PORT=3001
 
 RUN mkdir -p /data/data /data/uploads
-VOLUME ["/data"]
 EXPOSE 3001
 
 CMD ["npx", "tsx", "server/index.ts"]
