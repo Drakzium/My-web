@@ -1,6 +1,7 @@
 import { useEffect, useState, type FormEvent } from 'react'
 import { Link, useNavigate, useParams } from 'react-router-dom'
 import { api } from '../../lib/api'
+import { mediaUrl } from '../../lib/media'
 import { Button, Input, Label, Textarea } from '../../components/ui'
 import type { MediaItem, Project, ProjectLink } from '../../types'
 
@@ -196,7 +197,7 @@ export function AdminProjectEditorPage() {
               {(form.galleryImages || []).map((img) =>
                 img ? (
                   <div key={img.id} className="overflow-hidden rounded-lg border border-border">
-                    <img src={img.fileUrl} alt="" className="aspect-video w-full object-cover" />
+                    <img src={mediaUrl(img.fileUrl)} alt="" className="aspect-video w-full object-cover" />
                     <div className="flex gap-1 p-2">
                       <Button type="button" variant="secondary" className="px-2 py-1 text-xs" onClick={() => setThumbnail(img.id)}>
                         {form.thumbnailId === img.id ? 'Thumbnail' : 'Set thumb'}

@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
 import { ExternalLink } from 'lucide-react'
 import { api } from '../../lib/api'
+import { mediaUrl } from '../../lib/media'
 import { Badge } from '../../components/ui'
 import type { Project } from '../../types'
 
@@ -75,7 +76,7 @@ export function ProjectDetailPage() {
             img ? (
               <img
                 key={img.id}
-                src={img.fileUrl}
+                src={mediaUrl(img.fileUrl)}
                 alt={project.title}
                 loading="lazy"
                 className="w-full rounded-2xl border border-border object-cover"

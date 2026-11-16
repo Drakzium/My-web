@@ -5,8 +5,10 @@ import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 const root = path.resolve(__dirname, '..')
-const dataDir = path.join(root, 'data')
-const uploadsDir = path.join(root, 'uploads')
+/** Persistent volume path on Railway/Render/Fly (e.g. /data). Defaults to project root. */
+const persistRoot = process.env.DATA_DIR ? path.resolve(process.env.DATA_DIR) : root
+const dataDir = path.join(persistRoot, 'data')
+const uploadsDir = path.join(persistRoot, 'uploads')
 
 fs.mkdirSync(dataDir, { recursive: true })
 fs.mkdirSync(uploadsDir, { recursive: true })

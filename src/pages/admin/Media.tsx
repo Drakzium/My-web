@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { api, ApiError } from '../../lib/api'
+import { mediaUrl } from '../../lib/media'
 import { Button, Input } from '../../components/ui'
 import type { MediaItem } from '../../types'
 
@@ -77,7 +78,7 @@ export function AdminMediaPage() {
       <div className="mt-8 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
         {items.map((m) => (
           <div key={m.id} className="overflow-hidden rounded-xl border border-border bg-surface">
-            <img src={m.fileUrl} alt={m.fileName} loading="lazy" className="aspect-video w-full object-cover" />
+            <img src={mediaUrl(m.fileUrl)} alt={m.fileName} loading="lazy" className="aspect-video w-full object-cover" />
             <div className="space-y-1 p-3 text-xs text-muted">
               <p className="truncate text-white">{m.fileName}</p>
               <p>{(m.fileSize / 1024).toFixed(1)} KB · {m.fileType}</p>

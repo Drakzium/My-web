@@ -1,3 +1,5 @@
+const API_BASE = (import.meta.env.VITE_API_URL || '').replace(/\/$/, '')
+
 export class ApiError extends Error {
   status: number
   code?: string
@@ -9,7 +11,7 @@ export class ApiError extends Error {
 }
 
 async function request<T>(path: string, init?: RequestInit): Promise<T> {
-  const res = await fetch(path, {
+  const res = await fetch(`${API_BASE}${path}`, {
     credentials: 'include',
     ...init,
     headers: {

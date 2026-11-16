@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { ExternalLink, FolderGit2 } from 'lucide-react'
 import { Badge } from './ui'
+import { mediaUrl } from '../lib/media'
 import type { Project } from '../types'
 
 export function ProjectCard({ project }: { project: Project }) {
@@ -12,7 +13,7 @@ export function ProjectCard({ project }: { project: Project }) {
       <Link to={`/projects/${project.slug}`} className="block aspect-[16/10] overflow-hidden bg-surface-2">
         {project.thumbnail?.fileUrl ? (
           <img
-            src={project.thumbnail.fileUrl}
+            src={mediaUrl(project.thumbnail.fileUrl)}
             alt={project.title}
             loading="lazy"
             className="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
